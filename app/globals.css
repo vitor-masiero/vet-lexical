@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f8f7;
+  --foreground: #14201b;
 }
 
 @theme inline {
@@ -14,13 +14,138 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b1210;
+    --foreground: #e7efec;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #99f6e4;
+  color: #042f2e;
+}
+
+/* ------------------------------------------------------------------ */
+/* Flip card (3D)                                                      */
+/* ------------------------------------------------------------------ */
+.flip-scene {
+  perspective: 1400px;
+}
+
+.flip-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0.16, 0.2, 1);
+}
+
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-face-back {
+  transform: rotateY(180deg);
+}
+
+/* ------------------------------------------------------------------ */
+/* Animações                                                           */
+/* ------------------------------------------------------------------ */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in-up {
+  animation: fade-in-up 0.35s ease-out both;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-toast {
+  animation: toast-in 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e6ebe9;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.4s infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    background: #1b2a25;
+  }
+  .skeleton::after {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      transparent
+    );
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Scrollbar discreta                                                   */
+/* ------------------------------------------------------------------ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c4d2cc transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c4d2cc;
+  border-radius: 999px;
 }

@@ -1,0 +1,43 @@
+// Prisma schema — Dicionário & Flashcards de Medicina Veterinária
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model GlossaryEntry {
+  id         String       @id @default(cuid())
+  term       String
+  definition String
+  examples   String[]
+  synonyms   String[]
+  note       String?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  flashcards Flashcard[]
+
+  @@index([term])
+}
+
+model Flashcard {
+  id              String         @id @default(cuid())
+  front           String
+  back            String
+  source          String         @default("manual") // manual | glossary | ai
+  glossaryEntryId String?
+  glossaryEntry   GlossaryEntry? @relation(fields: [glossaryEntryId], references: [id], onDelete: SetNull)
+  createdAt       DateTime       @default(now())
+
+  @@index([createdAt])
+}
