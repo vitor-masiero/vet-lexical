@@ -26,7 +26,7 @@ flashcards.
 | Banco      | PostgreSQL no [Neon](https://neon.tech)                 |
 | ORM        | Prisma 7 (driver adapter `@prisma/adapter-neon`)        |
 | Auth       | Conta única, JWT em cookie httpOnly (`jose` + `bcryptjs`) |
-| IA         | [opencode Go](https://opencode.ai) — modelo `mimo-v2.5` |
+| IA         | [opencode Go](https://opencode.ai) — modelo `beam-free`  |
 | Deploy     | [Vercel](https://vercel.com)                            |
 
 ## 🚀 Rodando localmente
@@ -52,7 +52,7 @@ cp .env.example .env
 | `AUTH_SECRET`     | Segredo aleatório (`openssl rand -base64 32`)                    |
 | `SEED_EMAIL`      | E-mail da conta de acesso                                        |
 | `SEED_PASSWORD`   | Senha da conta de acesso                                         |
-| `AI_MODEL`        | (Opcional) sobrescreve o modelo padrão `mimo-v2.5`               |
+| `AI_MODEL`        | (Opcional) sobrescreve o modelo padrão `beam-free`               |
 
 ### 3. Crie o schema no banco
 
@@ -101,7 +101,7 @@ A chamada fica isolada em `lib/ai.ts`:
 
 ```
 Endpoint : https://opencode.ai/inference/go/openai/v1/chat/completions
-Modelo   : mimo-v2.5
+Modelo   : beam-free
 Auth     : Authorization: Bearer <OPENCODE_API_KEY>
 Headers  : x-opencode-session (por conversa) + User-Agent próprio
 SDK      : @ai-sdk/openai-compatible

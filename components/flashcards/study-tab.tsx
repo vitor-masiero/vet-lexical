@@ -45,7 +45,7 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
   if (cards.length === 0) {
     return (
       <div className="animate-in-up flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white/60 px-6 py-16 text-center dark:border-slate-700 dark:bg-slate-900/40">
-        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 dark:bg-teal-950/40 dark:text-teal-400">
+        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400">
           <CardsIcon className="h-7 w-7" />
         </span>
         <h2 className="mt-4 text-lg font-semibold text-slate-800 dark:text-slate-100">
@@ -58,7 +58,7 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
         <button
           type="button"
           onClick={onGoCreate}
-          className="mt-5 flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
+          className="mt-5 flex items-center gap-2 rounded-xl bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-700"
         >
           <PlusIcon className="h-4 w-4" />
           Criar flashcards
@@ -73,7 +73,7 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
     const reviewCards = deck.filter((c) => review.has(c.id));
     return (
       <div className="animate-in-up mx-auto max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-100 text-rose-600 dark:bg-rose-950/50 dark:text-rose-400">
           <CheckIcon className="h-7 w-7" />
         </span>
         <h2 className="mt-4 text-xl font-bold text-slate-900 dark:text-slate-50">
@@ -84,11 +84,11 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
         </p>
 
         <div className="mt-5 grid grid-cols-2 gap-3">
-          <div className="rounded-xl bg-emerald-50 px-4 py-3 dark:bg-emerald-950/30">
-            <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">
+          <div className="rounded-xl bg-rose-50 px-4 py-3 dark:bg-rose-950/30">
+            <p className="text-2xl font-bold text-rose-700 dark:text-rose-400">
               {known.size}
             </p>
-            <p className="text-xs font-medium text-emerald-700/80 dark:text-emerald-400/80">
+            <p className="text-xs font-medium text-rose-700/80 dark:text-rose-400/80">
               Acertei
             </p>
           </div>
@@ -107,7 +107,7 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
             <button
               type="button"
               onClick={() => reset(reviewCards)}
-              className="flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
+              className="flex items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-700"
             >
               <RotateIcon className="h-4 w-4" />
               Revisar os {reviewCards.length} que errei
@@ -140,7 +140,7 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
         <button
           type="button"
           onClick={() => reset(shuffle(cards))}
-          className="flex items-center gap-1.5 text-xs font-medium text-slate-500 transition-colors hover:text-teal-700 dark:text-slate-400 dark:hover:text-teal-300"
+          className="flex items-center gap-1.5 text-xs font-medium text-slate-500 transition-colors hover:text-rose-700 dark:text-slate-400 dark:hover:text-rose-300"
         >
           <RotateIcon className="h-3.5 w-3.5" />
           Embaralhar
@@ -149,7 +149,7 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
 
       <div className="mb-5 h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
         <div
-          className="h-full rounded-full bg-teal-500 transition-all duration-300"
+          className="h-full rounded-full bg-rose-500 transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -195,7 +195,7 @@ export function StudyTab({ cards, onGoCreate }: StudyTabProps) {
               setFlipped(false);
               setIndex((i) => i + 1);
             }}
-            className="flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+            className="flex items-center gap-1.5 rounded-xl bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-700"
           >
             <CheckIcon className="h-4 w-4" />
             Sei

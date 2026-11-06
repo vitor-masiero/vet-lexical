@@ -64,7 +64,7 @@ export default function FlashcardsPage() {
             <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
               Flashcards
             </h1>
-            <span className="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-700 dark:bg-teal-950/60 dark:text-teal-300">
+            <span className="rounded-full bg-rose-100 px-2 py-0.5 text-xs font-semibold text-rose-700 dark:bg-rose-950/60 dark:text-rose-300">
               {cards.length}
             </span>
           </div>
@@ -88,7 +88,7 @@ export default function FlashcardsPage() {
             onClick={() => setTab(t.id)}
             className={`flex-1 rounded-lg px-3 py-2 text-sm font-semibold transition-all ${
               tab === t.id
-                ? "bg-white text-teal-700 shadow-sm dark:bg-slate-900 dark:text-teal-300"
+                ? "bg-white text-rose-700 shadow-sm dark:bg-slate-900 dark:text-rose-300"
                 : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
             }`}
           >

@@ -24,8 +24,8 @@ interface ToastContextValue {
 const ToastContext = createContext<ToastContextValue | null>(null);
 
 const styles: Record<ToastType, string> = {
-  success: "border-emerald-200 bg-emerald-50 text-emerald-800",
-  error: "border-rose-200 bg-rose-50 text-rose-800",
+  success: "border-rose-200 bg-rose-50 text-rose-800",
+  error: "border-red-200 bg-red-50 text-red-800",
   info: "border-slate-200 bg-white text-slate-800",
 };
 

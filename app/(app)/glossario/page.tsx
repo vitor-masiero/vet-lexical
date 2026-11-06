@@ -178,7 +178,7 @@ export default function GlossarioPage() {
             <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
               Glossário
             </h1>
-            <span className="rounded-full bg-teal-100 px-2 py-0.5 text-xs font-semibold text-teal-700 dark:bg-teal-950/60 dark:text-teal-300">
+            <span className="rounded-full bg-rose-100 px-2 py-0.5 text-xs font-semibold text-rose-700 dark:bg-rose-950/60 dark:text-rose-300">
               {entries.length}
             </span>
           </div>
@@ -187,7 +187,7 @@ export default function GlossarioPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm focus-within:border-teal-400 dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 shadow-sm focus-within:border-rose-400 dark:border-slate-800 dark:bg-slate-900">
           <SearchIcon className="h-4 w-4 text-slate-400" />
           <input
             value={query}
@@ -234,7 +234,7 @@ export default function GlossarioPage() {
                       type="button"
                       onClick={() => openEdit(entry)}
                       aria-label="Editar nota"
-                      className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-teal-700 dark:hover:bg-slate-800 dark:hover:text-teal-300"
+                      className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-rose-700 dark:hover:bg-slate-800 dark:hover:text-rose-300"
                     >
                       <PencilIcon className="h-4 w-4" />
                     </button>
@@ -242,7 +242,7 @@ export default function GlossarioPage() {
                       type="button"
                       onClick={() => setDeleting(entry)}
                       aria-label="Excluir nota"
-                      className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400"
+                      className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 dark:hover:text-red-400"
                     >
                       <TrashIcon className="h-4 w-4" />
                     </button>
@@ -258,7 +258,7 @@ export default function GlossarioPage() {
                     {entry.synonyms.slice(0, 4).map((syn) => (
                       <span
                         key={syn}
-                        className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300"
+                        className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-medium text-rose-700 dark:bg-rose-950/40 dark:text-rose-300"
                       >
                         {syn}
                       </span>
@@ -279,8 +279,8 @@ export default function GlossarioPage() {
                   disabled={cardBusy === entry.id || cardDone.has(entry.id)}
                   className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold transition-colors ${
                     cardDone.has(entry.id)
-                      ? "text-emerald-600 dark:text-emerald-400"
-                      : "text-teal-700 hover:bg-teal-50 dark:text-teal-300 dark:hover:bg-teal-950/40"
+                      ? "text-rose-600 dark:text-rose-400"
+                      : "text-rose-700 hover:bg-rose-50 dark:text-rose-300 dark:hover:bg-rose-950/40"
                   }`}
                 >
                   {cardBusy === entry.id ? (
@@ -316,7 +316,7 @@ export default function GlossarioPage() {
               type="button"
               onClick={saveEdit}
               disabled={savingEdit || !form.term.trim() || !form.definition.trim()}
-              className="flex items-center gap-2 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700 disabled:opacity-50"
             >
               {savingEdit && <LoaderIcon className="h-4 w-4 animate-spin" />}
               Salvar
@@ -329,7 +329,7 @@ export default function GlossarioPage() {
             <input
               value={form.term}
               onChange={(e) => setForm((f) => ({ ...f, term: e.target.value }))}
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </Field>
           <Field label="Significado">
@@ -339,7 +339,7 @@ export default function GlossarioPage() {
                 setForm((f) => ({ ...f, definition: e.target.value }))
               }
               rows={4}
-              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </Field>
           <Field label="Exemplos (um por linha)">
@@ -349,7 +349,7 @@ export default function GlossarioPage() {
                 setForm((f) => ({ ...f, examplesText: e.target.value }))
               }
               rows={3}
-              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </Field>
           <Field label="Sinônimos (separados por vírgula)">
@@ -358,14 +358,14 @@ export default function GlossarioPage() {
               onChange={(e) =>
                 setForm((f) => ({ ...f, synonymsText: e.target.value }))
               }
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </Field>
           <Field label="Observação">
             <input
               value={form.note}
               onChange={(e) => setForm((f) => ({ ...f, note: e.target.value }))}
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </Field>
         </div>
@@ -389,7 +389,7 @@ export default function GlossarioPage() {
               type="button"
               onClick={confirmDelete}
               disabled={deletingBusy}
-              className="flex items-center gap-2 rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-50"
             >
               {deletingBusy && <LoaderIcon className="h-4 w-4 animate-spin" />}
               Excluir
@@ -426,7 +426,7 @@ function Field({
 function EmptyState() {
   return (
     <div className="animate-in-up flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white/60 px-6 py-16 text-center dark:border-slate-700 dark:bg-slate-900/40">
-      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 dark:bg-teal-950/40 dark:text-teal-400">
+      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400">
         <BookIcon className="h-7 w-7" />
       </span>
       <h2 className="mt-4 text-lg font-semibold text-slate-800 dark:text-slate-100">
@@ -438,7 +438,7 @@ function EmptyState() {
       </p>
       <Link
         href="/buscar"
-        className="mt-5 flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
+        className="mt-5 flex items-center gap-2 rounded-xl bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-700"
       >
         <SearchIcon className="h-4 w-4" />
         Pesquisar palavra

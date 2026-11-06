@@ -28,8 +28,8 @@ const SOURCE_STYLE: Record<string, string> = {
   manual:
     "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
   glossary:
-    "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300",
-  ai: "bg-teal-50 text-teal-700 dark:bg-teal-950/40 dark:text-teal-300",
+    "bg-pink-50 text-pink-700 dark:bg-pink-950/40 dark:text-pink-300",
+  ai: "bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300",
 };
 
 export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
@@ -92,7 +92,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
   if (cards.length === 0) {
     return (
       <div className="animate-in-up flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white/60 px-6 py-16 text-center dark:border-slate-700 dark:bg-slate-900/40">
-        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 dark:bg-teal-950/40 dark:text-teal-400">
+        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:text-rose-400">
           <CardsIcon className="h-7 w-7" />
         </span>
         <h2 className="mt-4 text-lg font-semibold text-slate-800 dark:text-slate-100">
@@ -104,7 +104,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
         <button
           type="button"
           onClick={onGoCreate}
-          className="mt-5 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
+          className="mt-5 rounded-xl bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-700"
         >
           Criar flashcards
         </button>
@@ -143,7 +143,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
                   type="button"
                   onClick={() => openEdit(card)}
                   aria-label="Editar card"
-                  className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-teal-700 dark:hover:bg-slate-800 dark:hover:text-teal-300"
+                  className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-slate-100 hover:text-rose-700 dark:hover:bg-slate-800 dark:hover:text-rose-300"
                 >
                   <PencilIcon className="h-4 w-4" />
                 </button>
@@ -151,7 +151,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
                   type="button"
                   onClick={() => setDeleting(card)}
                   aria-label="Excluir card"
-                  className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 dark:hover:text-rose-400"
+                  className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 dark:hover:text-red-400"
                 >
                   <TrashIcon className="h-4 w-4" />
                 </button>
@@ -178,7 +178,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
               type="button"
               onClick={saveEdit}
               disabled={saving || !front.trim() || !back.trim()}
-              className="flex items-center gap-2 rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700 disabled:opacity-50"
             >
               {saving && <LoaderIcon className="h-4 w-4 animate-spin" />}
               Salvar
@@ -195,7 +195,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
               value={front}
               onChange={(e) => setFront(e.target.value)}
               rows={2}
-              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </label>
           <label className="block space-y-1.5">
@@ -206,7 +206,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
               value={back}
               onChange={(e) => setBack(e.target.value)}
               rows={3}
-              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="w-full resize-none rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
           </label>
         </div>
@@ -229,7 +229,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
               type="button"
               onClick={confirmDelete}
               disabled={deletingBusy}
-              className="flex items-center gap-2 rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-50"
             >
               {deletingBusy && <LoaderIcon className="h-4 w-4 animate-spin" />}
               Excluir

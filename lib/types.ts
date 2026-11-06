@@ -18,10 +18,15 @@ export interface Flashcard {
   createdAt: string;
 }
 
+export interface WordExample {
+  texto: string;
+  fonte: string;
+}
+
 export interface WordDefinition {
   termo: string;
   definicao: string;
-  exemplos: string[];
+  exemplos: WordExample[];
   sinonimos: string[];
   observacao: string;
 }

@@ -130,20 +130,20 @@ export function CreateTab({ onCreated }: CreateTabProps) {
             onChange={(e) => setFront(e.target.value)}
             rows={2}
             placeholder="Frente — pergunta, frase ou palavra"
-            className="w-full resize-none rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+            className="w-full resize-none rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
           <textarea
             value={back}
             onChange={(e) => setBack(e.target.value)}
             rows={2}
             placeholder="Verso — resposta"
-            className="w-full resize-none rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+            className="w-full resize-none rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
           <div className="flex justify-end">
             <button
               type="submit"
               disabled={saving || !front.trim() || !back.trim()}
-              className="flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-xl bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-rose-700 disabled:opacity-50"
             >
               {saving ? (
                 <LoaderIcon className="h-4 w-4 animate-spin" />
@@ -157,9 +157,9 @@ export function CreateTab({ onCreated }: CreateTabProps) {
       </section>
 
       {/* IA */}
-      <section className="rounded-2xl border border-teal-200 bg-gradient-to-br from-teal-50/70 to-emerald-50/50 p-5 shadow-sm dark:border-teal-900/60 dark:from-teal-950/30 dark:to-emerald-950/20">
+      <section className="rounded-2xl border border-rose-200 bg-gradient-to-br from-rose-50/70 to-rose-50/50 p-5 shadow-sm dark:border-rose-900/60 dark:from-rose-950/30 dark:to-rose-950/20">
         <div className="mb-4 flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600 text-white">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-rose-600 text-white">
             <SparklesIcon className="h-4 w-4" />
           </span>
           <div>
@@ -178,7 +178,7 @@ export function CreateTab({ onCreated }: CreateTabProps) {
             onChange={(e) => setContext(e.target.value)}
             rows={3}
             placeholder="Ex.: sinais clínicos e diagnóstico de cianose em pequenos animais"
-            className="w-full resize-none rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+            className="w-full resize-none rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none placeholder:text-slate-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
           <div className="flex items-center justify-between gap-3">
             <label className="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300">
@@ -186,7 +186,7 @@ export function CreateTab({ onCreated }: CreateTabProps) {
               <select
                 value={count}
                 onChange={(e) => setCount(Number(e.target.value))}
-                className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-medium outline-none focus:border-teal-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+                className="rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-medium outline-none focus:border-rose-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
               >
                 {[5, 8, 10, 12, 15].map((n) => (
                   <option key={n} value={n}>
@@ -199,7 +199,7 @@ export function CreateTab({ onCreated }: CreateTabProps) {
               type="button"
               onClick={generate}
               disabled={generating || !context.trim()}
-              className="flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:opacity-50"
+              className="flex items-center gap-2 rounded-xl bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-rose-700 disabled:opacity-50"
             >
               {generating ? (
                 <LoaderIcon className="h-4 w-4 animate-spin" />
@@ -231,7 +231,7 @@ export function CreateTab({ onCreated }: CreateTabProps) {
               <button
                 type="button"
                 onClick={() => setGenerated([])}
-                className="text-xs font-medium text-slate-400 hover:text-rose-600"
+                className="text-xs font-medium text-slate-400 hover:text-red-600"
               >
                 Descartar
               </button>
@@ -256,7 +256,7 @@ export function CreateTab({ onCreated }: CreateTabProps) {
                       setGenerated((prev) => prev.filter((_, idx) => idx !== i))
                     }
                     aria-label="Remover card"
-                    className="rounded-lg p-1 text-slate-400 hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40"
+                    className="rounded-lg p-1 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40"
                   >
                     <XIcon className="h-4 w-4" />
                   </button>
@@ -267,7 +267,7 @@ export function CreateTab({ onCreated }: CreateTabProps) {
               type="button"
               onClick={saveBatch}
               disabled={savingBatch || generated.length === 0}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-emerald-700 disabled:opacity-50"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-rose-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-rose-700 disabled:opacity-50"
             >
               {savingBatch ? (
                 <LoaderIcon className="h-4 w-4 animate-spin" />

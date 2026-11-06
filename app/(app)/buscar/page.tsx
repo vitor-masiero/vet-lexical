@@ -62,7 +62,9 @@ export default function BuscarPage() {
         body: JSON.stringify({
           term: result.termo,
           definition: result.definicao,
-          examples: result.exemplos,
+          examples: result.exemplos.map((e) =>
+            e.fonte ? `${e.texto} — ${e.fonte}` : e.texto,
+          ),
           synonyms: result.sinonimos,
           note: result.observacao,
         }),
@@ -92,7 +94,7 @@ export default function BuscarPage() {
       </div>
 
       <form onSubmit={onSubmit} className="relative">
-        <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm transition-shadow focus-within:border-teal-400 focus-within:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm transition-shadow focus-within:border-rose-400 focus-within:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <SearchIcon className="ml-2 h-5 w-5 shrink-0 text-slate-400" />
           <input
             value={term}
@@ -104,7 +106,7 @@ export default function BuscarPage() {
           <button
             type="submit"
             disabled={loading || !term.trim()}
-            className="flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex items-center gap-2 rounded-xl bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-rose-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? (
               <LoaderIcon className="h-4 w-4 animate-spin" />
@@ -127,7 +129,7 @@ export default function BuscarPage() {
                 setTerm(s);
                 search(s);
               }}
-              className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 transition-colors hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+              className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 transition-colors hover:border-rose-300 hover:text-rose-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
             >
               {s}
             </button>
@@ -139,12 +141,12 @@ export default function BuscarPage() {
         {loading && <SkeletonResult />}
 
         {error && !loading && (
-          <div className="animate-in-up rounded-2xl border border-rose-200 bg-rose-50 p-5 text-sm text-rose-700 dark:border-rose-900/60 dark:bg-rose-950/40 dark:text-rose-300">
+          <div className="animate-in-up rounded-2xl border border-red-200 bg-red-50 p-5 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-300">
             <p className="font-medium">{error}</p>
             <button
               type="button"
               onClick={() => search(term)}
-              className="mt-3 rounded-lg bg-rose-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-rose-700"
+              className="mt-3 rounded-lg bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-700"
             >
               Tentar novamente
             </button>
@@ -153,8 +155,8 @@ export default function BuscarPage() {
 
         {result && !loading && (
           <article className="animate-in-up overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <div className="border-b border-slate-100 bg-gradient-to-br from-teal-50 to-emerald-50/50 px-6 py-5 dark:border-slate-800 dark:from-teal-950/40 dark:to-emerald-950/20">
-              <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-teal-700 dark:text-teal-400">
+            <div className="border-b border-slate-100 bg-gradient-to-br from-rose-50 to-rose-50/50 px-6 py-5 dark:border-slate-800 dark:from-rose-950/40 dark:to-rose-950/20">
+              <span className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-400">
                 <SparklesIcon className="h-3.5 w-3.5" />
                 Definição com IA
               </span>
@@ -184,10 +186,17 @@ export default function BuscarPage() {
                         key={i}
                         className="flex gap-2.5 rounded-xl bg-slate-50 px-3.5 py-2.5 text-sm leading-relaxed text-slate-700 dark:bg-slate-800/60 dark:text-slate-300"
                       >
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-[11px] font-bold text-teal-700 dark:bg-teal-900/60 dark:text-teal-300">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-100 text-[11px] font-bold text-rose-700 dark:bg-rose-900/60 dark:text-rose-300">
                           {i + 1}
                         </span>
-                        <span>{example}</span>
+                        <span className="flex-1">
+                          {example.texto}
+                          {example.fonte && (
+                            <span className="mt-1 block text-xs font-medium text-slate-400 dark:text-slate-500">
+                              Fonte: {example.fonte}
+                            </span>
+                          )}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -203,7 +212,7 @@ export default function BuscarPage() {
                     {result.sinonimos.map((syn) => (
                       <span
                         key={syn}
-                        className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300"
+                        className="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700 dark:bg-rose-950/40 dark:text-rose-300"
                       >
                         {syn}
                       </span>
@@ -237,8 +246,8 @@ export default function BuscarPage() {
                 disabled={saving || saved}
                 className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
                   saved
-                    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300"
-                    : "bg-teal-600 text-white hover:bg-teal-700 disabled:opacity-60"
+                    ? "bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-300"
+                    : "bg-rose-600 text-white hover:bg-rose-700 disabled:opacity-60"
                 }`}
               >
                 {saving ? (

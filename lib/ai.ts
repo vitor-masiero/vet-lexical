@@ -16,16 +16,23 @@ const opencodeGo = createOpenAICompatible({
   },
 });
 
-const model = opencodeGo(process.env.AI_MODEL ?? "mimo-v2.5");
+// Modelo gratuito da assinatura opencode Go. Pode ser sobrescrito via AI_MODEL.
+const model = opencodeGo(process.env.AI_MODEL ?? "beam-free");
 
 // ---------------------------------------------------------------------------
 // Schemas de saída
 // ---------------------------------------------------------------------------
 
+const wordExampleSchema = z.union([
+  // Aceita string simples (ex.: modelo ignorou o formato) e normaliza.
+  z.string().transform((texto) => ({ texto, fonte: "" })),
+  z.object({ texto: z.string(), fonte: z.string().default("") }),
+]);
+
 export const wordDefinitionSchema = z.object({
   termo: z.string().default(""),
   definicao: z.string(),
-  exemplos: z.array(z.string()).default([]),
+  exemplos: z.array(wordExampleSchema).default([]),
   sinonimos: z.array(z.string()).default([]),
   observacao: z.string().optional().default(""),
 });
@@ -94,12 +101,17 @@ REGRAS:
 {
   "termo": "<termo pesquisado>",
   "definicao": "<definição de dicionário, clara e completa>",
-  "exemplos": ["<exemplo de uso em contexto veterinário>", "..."],
+  "exemplos": [
+    { "texto": "<trecho ou paráfrase de uso real, extraído da literatura>", "fonte": "<referência bibliográfica>" }
+  ],
   "sinonimos": ["<sinônimo 1>", "..."],
   "observacao": "<nota adicional relevante, ou string vazia se não houver>"
 }
+- Os exemplos devem ser BIBLIOGRÁFICOS: utilize trechos ou paráfrases fiéis de fontes veterinárias reconhecidas (livros-texto, manuais, artigos científicos). NÃO invente frases genéricas nem exemplos fictícios.
+- Em "fonte", informe a referência da obra/autor/ano sempre que tiver confiança (ex.: "Merck Veterinary Manual", "Radostits et al., Veterinary Medicine, 10ª ed.").
+- NUNCA fabrique uma citação. Se não souber a referência exata, escreva "Referência não identificada" em "fonte".
 - Dê de 2 a 3 exemplos sempre que possível.
-- Se o termo não for da área veterinária, defina-o normalmente no contexto de ciências da saúde.`;
+- Se o termo não for da área veterinária, defina-o normalmente no contexto de ciências da saúde e use fontes da área da saúde quando possível.`;
 
 export async function searchWord(term: string): Promise<WordDefinition> {
   const prompt = `Defina o termo: "${term}"`;
