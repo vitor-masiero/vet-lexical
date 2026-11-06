@@ -242,7 +242,7 @@ export default function GlossarioPage() {
                       type="button"
                       onClick={() => setDeleting(entry)}
                       aria-label="Excluir nota"
-                      className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 dark:hover:text-red-400"
+                      className="rounded-lg p-1.5 text-slate-400 transition-colors hover:text-red-600 dark:hover:text-red-400"
                     >
                       <TrashIcon className="h-4 w-4" />
                     </button>
@@ -258,7 +258,7 @@ export default function GlossarioPage() {
                     {entry.synonyms.slice(0, 4).map((syn) => (
                       <span
                         key={syn}
-                        className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-medium text-rose-700 dark:bg-rose-950/40 dark:text-rose-300"
+                        className="search-highlight search-highlight--pill text-[11px]"
                       >
                         {syn}
                       </span>

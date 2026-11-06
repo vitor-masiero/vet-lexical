@@ -23,7 +23,7 @@ function isActive(pathname: string, href: string) {
 function Brand() {
   return (
     <Link href="/buscar" className="flex items-center gap-2.5">
-      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-600 text-white shadow-sm">
+      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-100 text-rose-700 shadow-sm">
         <BookIcon className="h-5 w-5" />
       </span>
       <span className="flex flex-col leading-none">

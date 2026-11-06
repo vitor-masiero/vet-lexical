@@ -32,7 +32,7 @@ export function LoginForm() {
   return (
     <div className="animate-in-up relative w-full max-w-sm">
       <div className="mb-8 flex flex-col items-center text-center">
-        <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-600 text-white shadow-lg shadow-rose-600/25">
+        <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-100 text-rose-700 shadow-sm shadow-rose-200/70">
           <BookIcon className="h-7 w-7" />
         </span>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-50">

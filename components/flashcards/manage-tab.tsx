@@ -28,7 +28,7 @@ const SOURCE_STYLE: Record<string, string> = {
   manual:
     "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
   glossary:
-    "bg-pink-50 text-pink-700 dark:bg-pink-950/40 dark:text-pink-300",
+    "bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300",
   ai: "bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300",
 };
 
@@ -151,7 +151,7 @@ export function ManageTab({ cards, onChanged, onGoCreate }: ManageTabProps) {
                   type="button"
                   onClick={() => setDeleting(card)}
                   aria-label="Excluir card"
-                  className="rounded-lg p-1.5 text-slate-400 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 dark:hover:text-red-400"
+                  className="rounded-lg p-1.5 text-slate-400 transition-colors hover:text-red-600 dark:hover:text-red-400"
                 >
                   <TrashIcon className="h-4 w-4" />
                 </button>

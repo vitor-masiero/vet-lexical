@@ -161,7 +161,7 @@ export default function BuscarPage() {
                 Definição com IA
               </span>
               <h2 className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-50">
-                {result.termo}
+                <mark className="search-highlight">{result.termo}</mark>
               </h2>
             </div>
 
@@ -171,7 +171,7 @@ export default function BuscarPage() {
                   Significado
                 </h3>
                 <p className="whitespace-pre-wrap text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">
-                  {result.definicao}
+                  <HighlightedText text={result.definicao} term={result.termo} />
                 </p>
               </section>
 
@@ -190,7 +190,7 @@ export default function BuscarPage() {
                           {i + 1}
                         </span>
                         <span className="flex-1">
-                          {example.texto}
+                          <HighlightedText text={example.texto} term={result.termo} />
                           {example.fonte && (
                             <span className="mt-1 block text-xs font-medium text-slate-400 dark:text-slate-500">
                               Fonte: {example.fonte}
@@ -212,7 +212,7 @@ export default function BuscarPage() {
                     {result.sinonimos.map((syn) => (
                       <span
                         key={syn}
-                        className="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700 dark:bg-rose-950/40 dark:text-rose-300"
+                        className="search-highlight search-highlight--pill text-xs"
                       >
                         {syn}
                       </span>
@@ -284,5 +284,26 @@ function SkeletonResult() {
         <div className="skeleton h-12 w-full rounded-xl" />
       </div>
     </div>
+  );
+}
+
+function HighlightedText({ text, term }: { text: string; term: string }) {
+  const query = term.trim();
+  if (!query) return text;
+
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const parts = text.split(new RegExp(`(${escaped})`, "gi"));
+  return (
+    <>
+      {parts.map((part, index) =>
+        part.toLocaleLowerCase() === query.toLocaleLowerCase() ? (
+          <mark className="search-highlight" key={`${index}-${part}`}>
+            {part}
+          </mark>
+        ) : (
+          part
+        ),
+      )}
+    </>
   );
 }
